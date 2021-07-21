@@ -1,31 +1,35 @@
-import React, { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, { useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 
-import ListItem from '../components/lists/ListItem';
-import ListItemDeleteAction from '../components/lists/ListItemDeleteAction';
-import ListItemSeparator from '../components/lists/ListItemSeparator';
-import Screen from '../components/Screen';
+import Screen from "../components/Screen";
+import {
+  ListItem,
+  ListItemDeleteAction,
+  ListItemSeparator,
+} from "../components/lists";
 
 const initialMessages = [
   {
     id: 1,
-    title: 'T1',
-    description: 'D1',
-    image: require('../assets/mosh.jpg'),
+    title: "Mosh Hamedani",
+    description: "Hey! Is this item still available?",
+    image: require("../assets/mosh.jpg"),
   },
   {
     id: 2,
-    title: 'T2',
-    description: 'D2',
-    image: require('../assets/mosh.jpg'),
+    title: "Mosh Hamedani",
+    description:
+      "I'm interested in this item. When will you be able to post it?",
+    image: require("../assets/mosh.jpg"),
   },
 ];
 
 function MessagesScreen(props) {
   const [messages, setMessages] = useState(initialMessages);
   const [refreshing, setRefreshing] = useState(false);
+
   const handleDelete = (message) => {
-    // delete the message from messages
+    // Delete the message from messages
     setMessages(messages.filter((m) => m.id !== message.id));
   };
 
@@ -39,8 +43,10 @@ function MessagesScreen(props) {
             title={item.title}
             subTitle={item.description}
             image={item.image}
-            onPress={() => console.log('i am here', item)}
-            renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item)} />}
+            onPress={() => console.log("Message selected", item)}
+            renderRightActions={() => (
+              <ListItemDeleteAction onPress={() => handleDelete(item)} />
+            )}
           />
         )}
         ItemSeparatorComponent={ListItemSeparator}
@@ -48,10 +54,10 @@ function MessagesScreen(props) {
         onRefresh={() => {
           setMessages([
             {
-              id: 3,
-              title: 'T3',
-              description: 'D3',
-              image: require('../assets/mosh.jpg'),
+              id: 2,
+              title: "T2",
+              description: "D2",
+              image: require("../assets/mosh.jpg"),
             },
           ]);
         }}

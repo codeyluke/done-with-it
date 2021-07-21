@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
-  TextInput,
-  Platform,
   TouchableWithoutFeedback,
   Modal,
   Button,
   FlatList,
-} from 'react-native';
+} from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import defaultStyles from '../config/styles';
-import AppText from './AppText';
-import Screen from '../components/Screen';
-import PickerItem from './PickerItem';
+import Text from "./Text";
+import defaultStyles from "../config/styles";
+import PickerItem from "./PickerItem";
+import Screen from "./Screen";
 
 function AppPicker({
   icon,
@@ -24,14 +22,14 @@ function AppPicker({
   PickerItemComponent = PickerItem,
   placeholder,
   selectedItem,
-  width = '100%',
+  width = "100%",
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={[styles.container, { width: width }]}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -40,12 +38,12 @@ function AppPicker({
               style={styles.icon}
             />
           )}
-
           {selectedItem ? (
-            <AppText style={styles.text}>{selectedItem.label}</AppText>
+            <Text style={styles.text}>{selectedItem.label}</Text>
           ) : (
-            <AppText style={styles.placeholder}>{placeholder}</AppText>
+            <Text style={styles.placeholder}>{placeholder}</Text>
           )}
+
           <MaterialCommunityIcons
             name="chevron-down"
             size={20}
@@ -56,7 +54,6 @@ function AppPicker({
       <Modal visible={modalVisible} animationType="slide">
         <Screen>
           <Button title="Close" onPress={() => setModalVisible(false)} />
-
           <FlatList
             data={items}
             keyExtractor={(item) => item.value.toString()}
@@ -82,7 +79,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: defaultStyles.colors.light,
     borderRadius: 25,
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 15,
     marginVertical: 10,
   },

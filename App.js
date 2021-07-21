@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
-import { TextInput, View, Text, Switch } from 'react-native';
-
-import Card from './app/components/Card';
+import React from 'react';
+import AppPicker from './app/components/Picker';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
-import MessagesScreen from './app/screens/MessagesScreen';
-import ViewImageScreen from './app/screens/ViewImageScreen';
-import Screen from './app/components/Screen';
-import Icon from './app/components/Icon';
-import ListItem from './app/components/lists/ListItem';
-import AccountScreen from './app/screens/AccountScreen';
-import ListingScreen from './app/screens/ListingScreen';
-import AppTextInput from './app/components/AppTextInput';
-import AppPicker from './app/components/AppPicker';
-import LoginScreen from './app/screens/LoginScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
+import LoginScreen from './app/screens/LoginScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
+import ViewImageScreen from './app/screens/ViewImageScreen';
+import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
-  return <ListingEditScreen />;
+  return <LoginScreen />;
 }

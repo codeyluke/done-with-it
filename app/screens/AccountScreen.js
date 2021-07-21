@@ -1,24 +1,23 @@
-import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View, FlatList } from "react-native";
 
-import ListItem from '../components/lists/ListItem';
-import Screen from '../components/Screen';
-import Icon from '../components/Icon';
-import colors from '../config/colors';
-import ListItemSeparator from '../components/lists/ListItemSeparator';
+import { ListItem, ListItemSeparator } from "../components/lists";
+import colors from "../config/colors";
+import Icon from "../components/Icon";
+import Screen from "../components/Screen";
 
 const menuItems = [
   {
-    title: 'My Listings',
+    title: "My Listings",
     icon: {
-      name: 'format-list-bulleted',
+      name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
   },
   {
-    title: 'My Messages',
+    title: "My Messages",
     icon: {
-      name: 'email',
+      name: "email",
       backgroundColor: colors.secondary,
     },
   },
@@ -30,8 +29,8 @@ function AccountScreen(props) {
       <View style={styles.container}>
         <ListItem
           title="Mosh Hamedani"
-          subTitle="programmingwith@gmail.com"
-          image={require('../assets/mosh.jpg')}
+          subTitle="programmingwithmosh@gmail.com"
+          image={require("../assets/mosh.jpg")}
         />
       </View>
       <View style={styles.container}>
@@ -43,23 +42,29 @@ function AccountScreen(props) {
             <ListItem
               title={item.title}
               IconComponent={
-                <Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
               }
             />
           )}
         />
       </View>
-      <ListItem title="Log Out" IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />} />
+      <ListItem
+        title="Log Out"
+        IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+      />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: 10,
-  },
   screen: {
     backgroundColor: colors.light,
+  },
+  container: {
+    marginVertical: 20,
   },
 });
 
